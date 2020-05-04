@@ -4,17 +4,22 @@
 
 제한 사항
 문자열 전체의 짝/홀수 인덱스가 아니라, 단어(공백을 기준)별로 짝/홀수 인덱스를 판단해야 합니다.
+첫 번째 글자는 0번째 인덱스로 보아 짝수번째 알파벳으로 처리해야 합니다.
 '''
 
 s = "try hello world"
 #return TrY HeLlO WoRlD
 
 def solution(s):
-  for i in range(len(s)):
-    if i % 2 == 0:
-      print(s[i].upper(), end="")
-    else:
-      print(s[i], end="")
-  #print()
+  answer = ''
+  s = s.split(' ')
+  for i in s:
+    for j in range(len(i)):
+      if j % 2 == 0:
+        answer += i[j].upper()
+      else:
+        answer += i[j]
+    answer += ' '
+  return answer.rstrip()
 
-solution(s)
+print(solution(s))
